@@ -116,54 +116,6 @@ img,canvas{display:block;max-width:100%}
   display:flex;align-items:center;gap:clamp(16px,2.4vw,28px);flex-wrap:wrap;
   margin-top:clamp(28px,4.4vh,46px)
 }
-.play{
-  display:inline-flex;align-items:center;gap:15px;cursor:pointer;font-family:inherit;
-  color:#1a1a18;font-weight:600;font-size:.98rem;letter-spacing:.01em;
-  padding:13px 26px 13px 15px;border:none;border-radius:44px;
-  background:linear-gradient(100deg,var(--amber),#f5c86a);
-  box-shadow:0 10px 34px -12px rgba(232,163,61,.7);
-  transition:transform .35s var(--ease),box-shadow .35s,filter .35s
-}
-.play:hover{transform:translateY(-2px);box-shadow:0 16px 42px -12px rgba(232,163,61,.85)}
-.play:active{transform:translateY(0)}
-.play-icon{
-  position:relative;width:34px;height:34px;border-radius:50%;background:#1a1a18;flex:none
-}
-.play-icon::before{
-  content:"";position:absolute;top:50%;left:53%;transform:translate(-50%,-50%);
-  width:0;height:0;border-left:12px solid var(--amber);border-top:8px solid transparent;border-bottom:8px solid transparent;
-  transition:opacity .2s
-}
-.play-icon::after{
-  content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:12px;height:12px;opacity:0;
-  border-left:4px solid var(--amber);border-right:4px solid var(--amber);
-  transition:opacity .2s
-}
-.play.is-playing .play-icon::before{opacity:0}
-.play.is-playing .play-icon::after{opacity:1}
-.play[disabled]{cursor:not-allowed;filter:grayscale(.5) brightness(.8);box-shadow:none}
-.play[disabled]:hover{transform:none}
-
-.readout{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--dim);padding:8px 14px;border:1px solid var(--line);border-radius:40px;background:rgba(42,42,37,.4)
-}
-.readout .dot{width:7px;height:7px;border-radius:50%;background:var(--faint);flex:none;transition:background .3s}
-.readout.live .dot{background:var(--amber);animation:blink 1.4s steps(2) infinite}
-.readout.live{color:var(--ink);border-color:var(--line-warm)}
-@keyframes blink{50%{opacity:.25}}
-
-/* ---- visualizer ---- */
-.bars{
-  width:100%;height:104px;margin-top:clamp(30px,5vh,54px)
-}
-.viz-caption{
-  display:flex;justify-content:space-between;margin-top:10px;max-width:100%;
-  font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)
-}
-.viz-caption span:nth-child(2){color:var(--dim)}
 
 .scroll-cue{
   position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:2;
@@ -388,14 +340,12 @@ h2{
 .js .reveal.is-in{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
 
 /* ---- hero intro — compositor-driven via .loaded ---- */
-.js .hero .eyebrow,.js .hero-title .line,.js .hero-sub,.js .hero-controls,.js .bars,.js .viz-caption,.js .scroll-cue{
+.js .hero .eyebrow,.js .hero-title .line,.js .hero-sub,.js .hero-controls,.js .scroll-cue{
   opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .hero.loaded .eyebrow{opacity:1;transform:none}
 .hero.loaded .hero-title .line{opacity:1;transform:none;transition-delay:.12s}
 .hero.loaded .hero-sub{opacity:1;transform:none;transition-delay:.26s}
 .hero.loaded .hero-controls{opacity:1;transform:none;transition-delay:.4s}
-.hero.loaded .bars{opacity:1;transform:none;transition-delay:.54s}
-.hero.loaded .viz-caption{opacity:1;transform:none;transition-delay:.62s}
 .hero.loaded .scroll-cue{opacity:1;transform:none;transition-delay:.8s}
 
 /* ---- focus ---- */
@@ -406,10 +356,10 @@ a:focus-visible,button:focus-visible,.slide:focus-visible,.reel-row:focus-visibl
 /* ---- reduced motion: static everything, force content visible ---- */
 @media (prefers-reduced-motion:reduce){
   .js .reveal,.js .reveal.is-in,
-  .js .hero .eyebrow,.js .hero-title .line,.js .hero-sub,.js .hero-controls,.js .bars,.js .viz-caption,.js .scroll-cue{
+  .js .hero .eyebrow,.js .hero-title .line,.js .hero-sub,.js .hero-controls,.js .scroll-cue{
     opacity:1!important;transform:none!important;transition:none!important}
   .grad{animation:none}
-  .brand-mark,.readout.live .dot,.scroll-cue span{animation:none}
+  .brand-mark,.scroll-cue span{animation:none}
 }
 
 /* ---- smooothy override: ensure slides are padded, not gapped ---- */
