@@ -1,0 +1,1 @@
+.smooothy-container{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory}.smooothy-track{display:flex;flex-wrap:nowrap;gap:0}.smooothy-slide{flex:0 0 auto;scroll-snap-align:start;scroll-snap-stop:normal}@media (prefers-reduced-motion:reduce){.smooothy-container{scroll-behavior:auto}.smooothy-slide{transition:none}}
